@@ -41,8 +41,8 @@
             </div>
             <div id="delete-panel-{{ item.id }}" class="delete-confirmation" data-delete-url="{% url 'main_list:delete_item' item.id %}">
                 <p>Delete?</p>
-                <button onclick="deleteItem({{ item.id }})" class="btn-yes">Yes</button>
-                <button onclick="hideDeleteConfirm({{ item.id }})" class="btn-no">No</button>
+                <button onclick="deleteItem({{ item.id }})" class="btn-yes"></button>
+                <button onclick="hideDeleteConfirm({{ item.id }})" class="btn-no"></button>
             </div>
         </div>
         {% endfor %}
@@ -76,6 +76,21 @@ function deleteItem(itemId) {
     const panel = document.querySelector(`#delete-panel-${itemId}`);
     window.location.href = panel.dataset.deleteUrl;
 }
+
+// Close delete panel when clicking outside
+document.addEventListener('click', function(e) {
+    // Check if any panel is open
+    const activeCard = document.querySelector('.grid_card.delete-active');
+    if (activeCard) {
+        const panel = activeCard.querySelector('.delete-confirmation');
+        const deleteButton = activeCard.querySelector('.delete-button');
+        
+        // If click is outside both the panel and delete button
+        if (!panel.contains(e.target) && !deleteButton.contains(e.target)) {
+            activeCard.classList.remove('delete-active');
+        }
+    }
+});
 </script>
 {% endblock %}
 </body>

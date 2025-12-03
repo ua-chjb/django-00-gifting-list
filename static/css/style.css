@@ -20,7 +20,7 @@ body {
 
 .person_name, .person_count {
     color: green;
-    font-size: 36px;
+    font-size: 3em;
     font-weight: bold;
 }
 
@@ -39,7 +39,7 @@ body {
 .grid_card {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: auto 1fr;
     position: relative;
     overflow: hidden;
 }
@@ -59,7 +59,7 @@ body {
 .item_who {
     display: inline-block;
     padding: 4px 12px;
-    margin: 2px;
+    margin: 0.25em;
     color: green;
     border: 2px solid green;
     background-color: white;
@@ -119,8 +119,37 @@ body {
     position: relative;
     cursor: pointer;
 }
+.delete-button {
+    grid-row: 1/3;
+    grid-column: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    /* z-index: 10; */
+    position: relative;
+    pointer-events: auto;
+}
 
-/* White line through it */
+
+.delete-button {
+    grid-row: 1/3;
+    grid-column: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.delete-icon {
+    width: 3em;
+    height: 3em;
+    background-color: darkslategray;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
 .delete-icon::after {
     content: '';
     position: absolute;
@@ -133,7 +162,7 @@ body {
 }
 
 .delete-icon:hover {
-    background-color: darkgray;  /* Darker red on hover */
+    background-color: darkgray;
 }
 
 .card-content {
@@ -150,38 +179,56 @@ body {
     top: 0;
     width: 20vw;
     height: 100%;
-    background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     transition: right 0.3s ease;
-    border-left: 2px solid #dc3545;
+    border-left: 3px solid white;
 }
 
 .grid_card.delete-active .delete-confirmation {
     right: 0;
 }
 
-.btn-yes, .btn-no {
-    margin: 5px;
-    padding: 8px 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
+.delete-confirmation p {
+    display: none;
 }
 
 .btn-yes {
-    background-color: #dc3545;
+    flex: 1;
+    width: 100%;
+    background-color: #6c757d;
     color: white;
+    border: none;
+    cursor: pointer;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.btn-yes::before {
+    content: 'Delete';
 }
 
 .btn-no {
-    background-color: green;
+    flex: 1;
+    width: 100%;
+    background-color: #495057;
     color: white;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.btn-no::before {
+    content: 'Cancel';
+}
 
 
 
@@ -211,12 +258,32 @@ body {
     text-decoration: none;
 }
 
+.add-item-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.add-item-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.add-item-form input,
+.add-item-form select {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.add-item-form button {
+    width: 100%;
+}
+
 input[type="text"],
 input[type="number"] {
     padding: 10px 12px;
     border: 2px solid #ddd;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 1em;
     font-family: inherit;
 }
 
@@ -231,6 +298,10 @@ input[type="number"]:focus {
     color: black !important;
     background-color: white !important;
     border: 2px solid green !important
+}
+
+.choices__input {
+    font-size: 34px;
 }
 
 /* Hover state */
@@ -299,13 +370,13 @@ input[type="number"]:focus {
 }
 
 .calc-emoji {
-    font-size: 1.2rem;
+    font-size: 20px;
 }
 
 .calc-total {
     display: flex;
     justify-content: space-between;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: bold;
     margin-top: 30px;
     padding-top: 20px;
@@ -336,30 +407,26 @@ input[type="number"]:focus {
 .filter_dropdowns {
     margin: 2em 2em 1em 2em;
 }
-.btn-filter {
-    margin: 1em 2em 2em 2em;
-}
 
 .btn-filter {
+    margin: 1em 2em 2em 2em;
     padding: 12px 30px;
     background-color: green;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 32px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s;
 }
-
-
 
 .btn-filter:hover {
     background-color: darkgreen;
 }
 
 .bottom_margin {
-    padding-bottom: 2em;
+    padding-bottom: 18em;
 }
 
 .home-bar {
@@ -386,47 +453,52 @@ input[type="number"]:focus {
     color: green;
 }
 
+
 @media all and (max-width: 1000px){
     .card_main, .calc-item, .calc-total {
-        font-size: 2.2em;
+        font-size: 34px;
         width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
+
+    /* .calc-item .item_who {
+        font-size: 1em;
+    } */
 
     .home-bar {
         padding: 4em;
     }
 
     .home-bar-emoji {
-        font-size: 4em;
+        font-size: 62px;
     }
     
     .home-bar-text {
-        font-size: 2em;
+        font-size: 32px;
     }
 
     .breadcrumb-item {
-        font-size:3em;
+        font-size:48px;
     }
 
     .breadcrumb-item {
-        font-size:2em;
+        font-size:32px;
     }
 
     .item_who {
         padding: 0.75em 2em;
-        font-size: 2.2em;
+        font-size: 34px;
         border-radius:2em;
     }
 
     .calc-emoji {
-        font-size: 3.2em;
+        font-size: 34px;
         padding-top: 0.25em;
     }
 
     .item_price {
-        font-size: 2.2em;
+        font-size: 34px;
     }
 
     .filter-form {
@@ -437,42 +509,87 @@ input[type="number"]:focus {
     }
 
     .filter-dropdowns {
-        margin: 2em 0;
+        margin: 0;
+        width: 100%;
+        /* padding: 1em; */
+    }
+
+    .filter-form .choices {
+        width: 100% !important;
+    }
+
+    .filter-group {
+        width: 100%;
     }
 
     .btn-filter {
-        padding: 0.5em;
-        width: 100%;
-        margin: 0;
-        padding: 0;
+        padding: 100px 0;
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .choices {
+        font-size: 34px;
     }
 
     .choices__inner, .choices__list--multiple, .choices__lst--dropdown {
-        font-size: 2.2em;
+        font-size: 34px;
     }
     
     .add-item-form label {
-        font-size: 2.2;
+        font-size: 34px;
         margin-bottom: 0.6em;
     }
     
     .add-item-form input[type="text"],
     .add-item-form input[type="number"],
     .add-item-form select {
-        font-size: 2.2em;
+        font-size: 34px;
         padding: 0.8em 1em;
     }
     
     .add-item-form .choices__inner {
-        font-size: 2.2em;
+        font-size: 34px;
         min-height: 3em;
         padding: 0.6em;
     }
     
     .add-item-form button[type="submit"] {
-        font-size: 2.2em;
+        font-size: 34px;
         margin-top: 1em;
         padding: 2em;
+    }
+
+    .add-item-form .choices__list--dropdown,
+    .add-item-form .choices__list--dropdown .choices__item,
+    .add-item-form .choices__input {
+        font-size: 34px !important;  /* Changed from 1rem */
+    }
+
+    .add-item-form .choices,
+    .add-item-form .choices__inner,
+    .add-item-form .choices__list--multiple,
+    .add-item-form .choices__item {
+        font-size: 34px !important;  /* Change this to whatever you want */
+    }
+
+    .filter-form .choices,
+    .filter-form .choices__inner,
+    .filter-form .choices__list--multiple,
+    .filter-form .choices__item {
+        font-size: 34px !important;
+    }
+
+    /* Keep dropdown options normal size */
+    .filter-form .choices__list--dropdown,
+    .filter-form .choices__list--dropdown .choices__item,
+    .filter-form .choices__input {
+        font-size: 34px !important;
+    }
+
+    .filter-form label {
+        font-size: 34px;
     }
 
         /* Add item form mobile */

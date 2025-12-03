@@ -20,51 +20,51 @@
         <a href="{% url 'main_list:items' person_name=person_name %}">← Back to {{ person_name }}'s List</a>
     {% endif %}
 
-    <form method="post" style="max-width: 500px; margin: 0 auto;" class="add-item-form">
+    <form method="post" class="add-item-form">
         {% csrf_token %}
         
         <!-- Item name -->
-        <label style="display: block; margin-bottom: 8px;">Item name</label>
-        <input type="text" name="name" id="item-name" placeholder="Enter item name" required style="width: 100%; margin-bottom: 16px;">
+        <label>Item name</label>
+        <input type="text" name="name" id="item-name" placeholder="Enter item name" required>
         
         <!-- Tagged people -->
-        <label style="display: block; margin-bottom: 8px;">For whom</label>
-        <select name="tagged_people" id="tagged-people" multiple style="margin-bottom: 16px;">
+        <label>For whom</label>
+        <select name="tagged_people" id="tagged-people" multiple>
             {% for person in people %}
                 <option value="{{ person.id }}" {% if person.who == person_name %}selected{% endif %}>{{ person.who }}</option>
             {% endfor %}
         </select>
         
         <!-- Gift type -->
-        <label style="display: block; margin-bottom: 8px;">Gift type</label>
-        <select name="type_gift" id="gift-type" required style="margin-bottom: 16px;">
+        <label>Gift type</label>
+        <select name="type_gift" id="gift-type" required>
             <option value="">Select type...</option>
             <option value="stocking">Stocking</option>
             <option value="main">Main</option>
         </select>
         
         <!-- Price -->
-        <label style="display: block; margin-bottom: 8px;">Price</label>
-        <input type="number" step="0.01" name="price" id="price" placeholder="Enter price" required style="width: 100%; margin-bottom: 16px;">
+        <label>Price</label>
+        <input type="number" step="0.01" name="price" id="price" placeholder="Enter price" required>
         
         <!-- Submit button -->
-        <button class="mdc-button mdc-button--raised" type="submit" style="width: 100%;">
+        <button class="mdc-button mdc-button--raised" type="submit">
             <span class="mdc-button__label">Add Item</span>
         </button>
     </form>
 
     <div class="home-bar">
         <a href="{% url 'main_list:index' %}">
-            <div>🏠</div>
-            <div>Home</div>
+            <div class="home-bar-emoji">🏠</div>
+            <div class="home-bar-text">Home</div>
         </a>
         <a href="{% url 'main_list:add_item_general' %}">
-            <div>➕</div>
-            <div>Add</div>
+            <div class="home-bar-emoji">➕</div>
+            <div class="home-bar-text">Add</div>
         </a>
         <a href="{% url 'main_list:calculator' %}">
-            <div>🧮</div>
-            <div>Calculator</div>
+            <div class="home-bar-emoji">🧮</div>
+            <div class="home-bar-text">Calculator</div>
         </a>
     </div>
 
