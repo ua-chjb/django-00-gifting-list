@@ -59,7 +59,7 @@
                 {% for person in item.who.all %}
                     <span class="item_who">{{ person.who }}</span>
                 {% endfor %}
-                <span class="calc-emoji">{{ item.type_gift|yesno:"🎄,🧦" }}</span>
+                <span class="calc-emoji">{% if item.type_gift == "main" %}🎄{% else %}🧦{% endif %}</span>
             </div>
         </div>
         {% endfor %}

@@ -388,41 +388,89 @@ input[type="number"]:focus {
 
 @media all and (max-width: 1000px){
     .card_main, .calc-item, .calc-total {
+        font-size: 2.2em;
         width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
-    
-    .filter-form {
-        width: 40%;
-    }
-    
-    .add-item-form input[type="text"],
-    .add-item-form input[type="number"],
-    .add-item-form .choices__inner {
-        font-size: 16px;  /* Prevents iOS zoom */
+
+    .home-bar {
+        padding: 4em;
     }
 
+    .home-bar-emoji {
+        font-size: 4em;
+    }
+    
+    .home-bar-text {
+        font-size: 2em;
+    }
+
+    .breadcrumb-item {
+        font-size:3em;
+    }
+
+    .breadcrumb-item {
+        font-size:2em;
+    }
+
+    .item_who {
+        padding: 0.75em 2em;
+        font-size: 2.2em;
+        border-radius:2em;
+    }
+
+    .calc-emoji {
+        font-size: 3.2em;
+        padding-top: 0.25em;
+    }
+
+    .item_price {
+        font-size: 2.2em;
+    }
+
+    .filter-form {
+        width: 90%;
+        margin-left: auto;
+        margin-right:auto;
+        margin-bottom: 2em;
+    }
+
+    .filter-dropdowns {
+        margin: 2em 0;
+    }
+
+    .btn-filter {
+        padding: 0.5em;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .choices__inner, .choices__list--multiple, .choices__lst--dropdown {
+        font-size: 2.2em;
+    }
+    
     .add-item-form label {
-        font-size: 1.2em;
+        font-size: 2.2;
         margin-bottom: 0.6em;
     }
     
     .add-item-form input[type="text"],
     .add-item-form input[type="number"],
     .add-item-form select {
-        font-size: 1.2em;
+        font-size: 2.2em;
         padding: 0.8em 1em;
     }
     
     .add-item-form .choices__inner {
-        font-size: 1.2em;
+        font-size: 2.2em;
         min-height: 3em;
         padding: 0.6em;
     }
     
     .add-item-form button[type="submit"] {
-        font-size: 1.2em;
+        font-size: 2.2em;
         margin-top: 1em;
         padding: 2em;
     }
