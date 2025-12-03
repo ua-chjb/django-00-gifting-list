@@ -28,13 +28,13 @@ SECRET_KEY = 'django-insecure-bg#-l3cqqzph3z%8+!#3h+k%_&xk_)9@&owqmohby8hh^&&!&1
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "54.219.236.16"
-    "xmas-gifting-list1234578987654323456787654.org",
-    "www.xmas-gifting-list1234578987654323456787654.org"
+    'xmas-gifting-list1234578987654323456787654.org',
+    'www.xmas-gifting-list1234578987654323456787654.org',
+    '54.219.236.16'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://54.219.236.16'
+    'https://54.219.236.16',
     "https://xmas-gifting-list1234578987654323456787654.org",
     "https://www.xmas-gifting-list1234578987654323456787654.org"    
 ]
