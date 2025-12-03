@@ -27,10 +27,15 @@ SECRET_KEY = 'django-insecure-bg#-l3cqqzph3z%8+!#3h+k%_&xk_)9@&owqmohby8hh^&&!&1
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["54.219.236.16"]
+ALLOWED_HOSTS = [
+    "54.219.236.16"
+    "xmas-gifting-list1234578987654323456787654.org",
+    "www.xmas-gifting-list1234578987654323456787654.org"
+]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://54.219.236.16', ]
+    'http://54.219.236.16'
+]
 
 # Application definition
 
