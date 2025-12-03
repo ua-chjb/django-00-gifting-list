@@ -23,14 +23,12 @@ SITE_ROOT = os.path.join(BASE_DIR, "site")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-bg#-l3cqqzph3z%8+!#3h+k%_&xk_)9@&owqmohby8hh^&&!&1'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["54.219.236.16"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://xmas-gift-list-2025-480111.ts.r.appspot.com',  # Replace with your actual App Engine URL
-]
+    'http://54.219.236.16', ]
 
 # Application definition
 
