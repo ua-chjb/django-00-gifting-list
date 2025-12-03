@@ -1,0 +1,439 @@
+body {
+    font-family: "Kedebideri", sans-serif;
+    padding-bottom: 70px;
+    /* background: linear-gradient(to bottom right, darkred, #f1263a); */
+}
+
+.background {
+    background: linear-gradient(to bottom right, darkred, #f1263a);
+    min-height: 100vh;
+}
+
+.h1_header {
+    color: white;
+    padding: 2em;
+}
+
+.text_black {
+    color: black;
+}
+
+.person_name, .person_count {
+    color: green;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.card {
+    margin: 2em;
+    padding: 2em;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);    
+}
+
+.card_main {
+    width: 60%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.grid_card {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 3fr 1fr;
+    position: relative;
+    overflow: hidden;
+}
+
+.card_name_who {
+    grid-row: 1/2;
+    grid-column: 1/3;
+}
+
+.item_name {
+    font-size: 5em;
+    font-weight: bold;
+    color: green;
+
+}
+
+.item_who {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    color: green;
+    border: 2px solid green;
+    background-color: white;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    color: #333;
+    text-decoration: none !important;
+}
+
+.item_who:hover {
+    background-color: green;
+    color: white;
+}
+
+.item_type{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: 2em;
+}
+
+
+.item_price {
+    grid-row: 2/3;
+    grid-column: 1/4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size:1.5em;
+    font-weight:bold;
+}
+
+.item_delete {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.delete-button {
+    grid-row: 1/3;
+    grid-column: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.delete-icon {
+    width: 3em;
+    height: 3em;
+    background-color: darkslategray;  /* Red */
+    border-radius: 50%;  /* Circle */
+    position: relative;
+    cursor: pointer;
+}
+
+/* White line through it */
+.delete-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    width: 70%;
+    height: 3px;
+    background-color: white;
+    transform: translateY(-50%);
+}
+
+.delete-icon:hover {
+    background-color: darkgray;  /* Darker red on hover */
+}
+
+.card-content {
+    transition: transform 0.3s ease;
+}
+
+.grid_card.delete-active .card-content {
+    transform: translateX(-20vw);
+}
+
+.delete-confirmation {
+    position: absolute;
+    right: -20vw;
+    top: 0;
+    width: 20vw;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease;
+    border-left: 2px solid #dc3545;
+}
+
+.grid_card.delete-active .delete-confirmation {
+    right: 0;
+}
+
+.btn-yes, .btn-no {
+    margin: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-yes {
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-no {
+    background-color: green;
+    color: white;
+}
+
+
+
+
+.flex {
+    display: flex;
+}
+
+.f_space_between {
+    justify-content: space-between;
+    align-items: space-between;
+}
+
+.f_row {
+    flex-direction: row;
+}
+.breadcrumb a, .breadcrumb-item.active, .breadcrumb-item + .breadcrumb-item::before {
+    color: white !important;
+}
+
+.breadcrumb_nav {
+    margin: 0 2em;
+    padding: 0 2em;
+}
+
+.who {
+    color:rgb(189, 25, 25);
+    text-decoration: none;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: green;
+}
+
+/* Choices.js selected item styling */
+.choices__list--multiple .choices__item {
+    color: black !important;
+    background-color: white !important;
+    border: 2px solid green !important
+}
+
+/* Hover state */
+.choices__list--multiple .choices__item:hover {
+    color: white !important;
+    background-color: green !important;
+    border-color: green !important;
+}
+
+/* Remove button - default black */
+.choices__list--multiple .choices__item .choices__button {
+    border-left: 1px solid rgba(0, 0, 0, 0.5) !important;
+    opacity: 1 !important;
+    filter: brightness(0) !important;
+}
+
+/* Remove button - white on hover */
+.choices__list--multiple .choices__item:hover .choices__button {
+    border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
+    filter: brightness(0) invert(1) !important;
+}
+
+
+.mdc-button--raised {
+    background-color: rgb(142, 17, 17) !important;
+    color: white !important;
+}
+
+.mdc-button--raised:hover {
+    background-color: rgb(227, 64, 64) !important;
+}
+
+.calc-item {
+    padding: 2em 2em;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calc-item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.calc-item-name {
+    font-weight: 600;
+}
+
+.calc-dots {
+    flex-grow: 1;
+    border-bottom: 2px dotted #ccc;
+    margin: 0 10px;
+    min-width: 20px;
+}
+
+.calc-item-price {
+    font-weight: 600;
+}
+
+.calc-item-tags {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.calc-emoji {
+    font-size: 1.2rem;
+}
+
+.calc-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 3px solid #ccc;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calc-total-text {
+    color: #ccc;
+}
+
+.calc-total-amount {
+    color: #ccc;
+}
+
+
+.filter-form {
+    justify-content: center;
+    display: flex;
+    flex-direction:column;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.filter_dropdowns {
+    margin: 2em 2em 1em 2em;
+}
+.btn-filter {
+    margin: 1em 2em 2em 2em;
+}
+
+.btn-filter {
+    padding: 12px 30px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+
+
+.btn-filter:hover {
+    background-color: darkgreen;
+}
+
+.bottom_margin {
+    padding-bottom: 2em;
+}
+
+.home-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.home-bar a {
+    text-decoration: none;
+    text-align: center;
+    color: #333;
+    flex: 1;
+}
+
+.home-bar a:hover {
+    color: green;
+}
+
+@media all and (max-width: 1000px){
+    .card_main, .calc-item, .calc-total {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .filter-form {
+        width: 40%;
+    }
+    
+    .add-item-form input[type="text"],
+    .add-item-form input[type="number"],
+    .add-item-form .choices__inner {
+        font-size: 16px;  /* Prevents iOS zoom */
+    }
+
+    .add-item-form label {
+        font-size: 1.2em;
+        margin-bottom: 0.6em;
+    }
+    
+    .add-item-form input[type="text"],
+    .add-item-form input[type="number"],
+    .add-item-form select {
+        font-size: 1.2em;
+        padding: 0.8em 1em;
+    }
+    
+    .add-item-form .choices__inner {
+        font-size: 1.2em;
+        min-height: 3em;
+        padding: 0.6em;
+    }
+    
+    .add-item-form button[type="submit"] {
+        font-size: 1.2em;
+        margin-top: 1em;
+        padding: 2em;
+    }
+
+        /* Add item form mobile */
+    .add-item-form {
+        height: 100% !important;
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100% !important;
+        padding: 0 15px !important;
+    }
+}

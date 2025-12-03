@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Xmas 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kedebideri:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="background bottom_margin">
+        <h1 class="h1_header">Gift Calculator</h1>
+        
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb_nav">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'main_list:index' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Calculator</li>
+            </ol>
+        </nav>
+
+        <!-- Filter Form -->
+        <form method="GET" class="filter-form">
+            <div class="card filter_dropdowns">
+                <div class="filter-group">
+                    <label for="people-filter">Who:</label>
+                    <select id="people-filter" name="people" multiple>
+                        {% for person in all_people %}
+                            <option value="{{ person.who }}" {% if person.who in selected_people %}selected{% endif %}>
+                                {{ person.who }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="type-filter">Type:</label>
+                    <select id="type-filter" name="type" multiple>
+                        <option value="stocking" {% if 'stocking' in selected_types %}selected{% endif %}>🧦 Stocking</option>
+                        <option value="main" {% if 'main' in selected_types %}selected{% endif %}>🎄 Main</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-filter">Apply</button>
+        </form>
+
+        {% for item in items %}
+        <div class=" card calc-item">
+            <div class="calc-item-header">
+                <span class="calc-item-name">{{ item.name }}</span>
+                <span class="calc-dots"></span>
+                <span class="calc-item-price">${{ item.price|floatformat:2 }}</span>
+            </div>
+            <div class="calc-item-tags">
+                {% for person in item.who.all %}
+                    <span class="item_who">{{ person.who }}</span>
+                {% endfor %}
+                <span class="calc-emoji">{{ item.type_gift|yesno:"🎄,🧦" }}</span>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="calc-total">
+            <span class="calc-total-text">Total</span>
+            <span class="calc-total-amount">${{ total|floatformat:2 }}</span>
+        </div>
+    </div>
+
+    <div class="home-bar">
+        <a href="{% url 'main_list:index' %}">
+            <div>🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="{% url 'main_list:add_item_general' %}">
+            <div>➕</div>
+            <div>Add</div>
+        </a>
+        <a href="{% url 'main_list:calculator' %}">
+            <div>🧮</div>
+            <div>Calculator</div>
+        </a>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script>
+    // Initialize Choices.js for people filter
+    const peopleChoices = new Choices('#people-filter', {
+        removeItemButton: true,
+        searchEnabled: true,
+        placeholder: true,
+        placeholderValue: 'Select people'
+    });
+    
+    // Initialize Choices.js for type filter
+    const typeChoices = new Choices('#type-filter', {
+        removeItemButton: true,
+        searchEnabled: false,
+        placeholder: true,
+        placeholderValue: 'Select type'
+    });
+</script>
+</body>
+</html>

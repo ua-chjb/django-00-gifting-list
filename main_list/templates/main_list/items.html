@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <title>Xmas 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kedebideri:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="background bottom_margin">
+        <h1 class="h1_header">Gift list for {{ person_name }}</h1>
+    
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb_nav">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'main_list:index' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ person_name }}</li>
+            </ol>
+        </nav>
+        
+        {% for item in items %}
+        <div class="card items grid_card">
+            <div class="card_name_who">
+                <div class="item item_name"> {{ item.name }}</div>
+                {% for person in item.who.all %}
+                <a href="{% url 'main_list:items' person.who %}" class="item_who">
+                    {{ person.who }}
+                </a>
+                {% endfor %}
+            </div>
+            <div class="item item_type">
+                <span class="calc-emoji">{% if item.type_gift == "main" %}🎄{% else %}🧦{% endif %}</span>
+            </div>
+            <div class="item item_price">${{ item.price|floatformat:2 }}</div>
+
+            <div class="delete-button" onclick="showDeleteConfirm({{ item.id }})">
+                <div class="delete-icon"></div>
+            </div>
+            <div id="delete-panel-{{ item.id }}" class="delete-confirmation" data-delete-url="{% url 'main_list:delete_item' item.id %}">
+                <p>Delete?</p>
+                <button onclick="deleteItem({{ item.id }})" class="btn-yes">Yes</button>
+                <button onclick="hideDeleteConfirm({{ item.id }})" class="btn-no">No</button>
+            </div>
+        </div>
+        {% endfor %}
+    
+    </div>
+    <div class="home-bar">
+        <a href="{% url 'main_list:index' %}">
+            <div>🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="{% url 'main_list:add_item_general' %}">
+            <div>➕</div>
+            <div>Add</div>
+        </a>
+        <a href="{% url 'main_list:calculator' %}">
+            <div>🧮</div>
+            <div>Calculator</div>
+        </a>
+    </div>
+{% block extra_js %}
+<script>
+function showDeleteConfirm(itemId) {
+    document.querySelector(`#delete-panel-${itemId}`).closest('.grid_card').classList.add('delete-active');
+}
+
+function hideDeleteConfirm(itemId) {
+    document.querySelector(`#delete-panel-${itemId}`).closest('.grid_card').classList.remove('delete-active');
+}
+
+function deleteItem(itemId) {
+    const panel = document.querySelector(`#delete-panel-${itemId}`);
+    window.location.href = panel.dataset.deleteUrl;
+}
+</script>
+{% endblock %}
+</body>
+</html>
