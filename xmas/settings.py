@@ -34,9 +34,9 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://54.219.236.16'
-    "http://xmas-gifting-list1234578987654323456787654.org",
-    "http://www.xmas-gifting-list1234578987654323456787654.org"    
+    'https://54.219.236.16'
+    "https://xmas-gifting-list1234578987654323456787654.org",
+    "https://www.xmas-gifting-list1234578987654323456787654.org"    
 ]
 
 # Application definition
