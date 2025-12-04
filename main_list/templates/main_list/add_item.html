@@ -14,8 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>    
 </head>
 <body>
-    <h1 class="h1_header text_black">Add item{% if person_name %} for {{ person_name }}{% endif %}</h1>
-
+    <h1 class="h1_header text_black">
+        Add item{% if person_name %} for {{ person_name }}{% endif %}
+    </h1>
+    
     {% if person_name %}
         <a href="{% url 'main_list:items' person_name=person_name %}">← Back to {{ person_name }}'s List</a>
     {% endif %}

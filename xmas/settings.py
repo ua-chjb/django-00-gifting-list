@@ -42,6 +42,10 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/login/"
+LOGIN_URL = "/login/"
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -67,7 +71,7 @@ ROOT_URLCONF = 'xmas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "main_list" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -6,6 +6,7 @@ app_name = "main_list"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("signup/", views.signup, name="signup"),
     path("favicon.ico", RedirectView.as_view(url="/static/favicon.ico")),
     path("calculator/", views.calculator, name="calculator"),
     path("add/", views.add_item, name="add_item_general"),

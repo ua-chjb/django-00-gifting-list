@@ -12,7 +12,10 @@
 </head>
 <body>
     <div class="background bottom_margin">
-        <h1 class="h1_header">Christmas gifting 2025</h1>
+        <h1 class="h1_header">
+            Christmas gifting 2025
+            <a href="{% url 'logout' %}" style="float: right; color: white; font-size: 0.5em;">Logout</a>
+        </h1>
     
         {% for person in people_with_counts %}
         <div class="card card_main">        

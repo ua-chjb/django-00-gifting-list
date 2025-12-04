@@ -13,8 +13,11 @@
 </head>
 <body>
     <div class="background bottom_margin">
-        <h1 class="h1_header">Gift Calculator</h1>
-        
+        <h1 class="h1_header">
+            Gift Calculator
+            <a href="{% url 'logout' %}" style="float: right; color: white; font-size: 0.5em;">Logout</a>
+        </h1>
+            
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb_nav">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url 'main_list:index' %}">Home</a></li>

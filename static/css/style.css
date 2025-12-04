@@ -425,8 +425,105 @@ input[type="number"]:focus {
     background-color: darkgreen;
 }
 
+
+/* Auth pages */
+.auth-card {
+    border-radius: 16px;
+}
+
+.auth-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    margin-bottom: 8px;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: green;
+}
+
+.auth-form .mdc-button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.auth-link a {
+    color: green;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    background-color: #ffe6e6;
+    border: 1px solid #ff4444;
+    color: #cc0000;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 16px 0;
+}
+
+.logout-message {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.mdc-button-link {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.auth_background {
+    min-height: 100vh;
+    padding-bottom: 0;
+}
+
+.auth_background .h1_header {
+    flex-shrink: 0;
+}
+
+.auth_background .card_main {
+    flex-shrink: 0;
+}
+
+body:has(.auth_background) {
+    padding-bottom: 0;
+}
+
+
+
 .bottom_margin {
-    padding-bottom: 18em;
+    padding-bottom: 2em;
 }
 
 .home-bar {
@@ -461,10 +558,10 @@ input[type="number"]:focus {
         margin-left: auto;
         margin-right: auto;
     }
-
-    /* .calc-item .item_who {
-        font-size: 1em;
-    } */
+    
+    .bottom_margin {
+        padding-bottom: 18em;
+    }
 
     .home-bar {
         padding: 4em;
@@ -485,6 +582,45 @@ input[type="number"]:focus {
     .breadcrumb-item {
         font-size:32px;
     }
+
+
+    .auth-card {
+        margin-top: 0
+    }
+
+    .auth-form label {
+        font-size: 16px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    
+    .auth-form input {
+        font-size: 16px;
+    }
+    
+    .auth-form .mdc-button {
+        font-size: 316x;
+        padding: 30px 0;
+        margin-top: 40px;
+    }
+    
+    .auth-link {
+        font-size: 16px;
+        margin-top: 40px;
+    }
+    
+    .logout-message {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .error-message {
+        font-size: 28px;
+        padding: 20px;
+        margin: 30px 0;
+    }
+
+
 
     .item_who {
         padding: 0.75em 2em;
