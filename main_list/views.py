@@ -11,8 +11,8 @@ def signup(request):
             user = form.save()
             login(request, user)
 
-            for name, _ in models.Person.person_enum:
-                models.Person.objects.create(user=user, who=name)
+            # for name, _ in models.Person.person_enum:
+            #     models.Person.objects.create(user=user, who=name)
 
             return redirect("main_list:index")
     else:
@@ -46,7 +46,7 @@ def add_item(request, person_name=None):
         name = request.POST.get("name")
         type_gift = request.POST.get("type_gift")
         price = request.POST.get("price")
-        tagged_people_ids = request.POST.getlist("tagged_people")
+        tagged_people_data = request.POST.getlist("tagged_people")
 
         item = models.Item.objects.create(
             user=request.user,
@@ -55,22 +55,31 @@ def add_item(request, person_name=None):
             price=price
         )
 
-        if person_name:
-            person = models.Person.objects.get(who=person_name, user=request.user)
-            item.who.add(person)
-        
-        for person_id in tagged_people_ids:
-            person = models.Person.objects.get(id=person_id, user=request.user)
-            item.who.add(person)
+        for data in tagged_people_data:
+            try:
+                person_id = int(data)
+                person = models.Person.objects.get(id=person_id, user=request.user)
+                item.who.add(person)
+            except (ValueError, models.Person.DoesNotExist):
+                person, _ = models.Person.objects.get_or_create(
+                    user=request.user,
+                    who=data
+                )
+                item.who.add(person)
 
         if person_name:
             return redirect("main_list:items", person_name=person_name)
-        elif tagged_people_ids:
-            first_person = models.Person.objects.get(id=tagged_people_ids[0], user=request.user)
+        elif tagged_people_data:
+            first_data = tagged_people_data[0]
+            try:
+                person_id = int(first_data)
+                first_person = models.Person.objects.get(id=person_id, user=request.user)
+            except (ValueError, models.Person.DoesNotExist):
+                first_person = models.Person.objects.get(user=request.user, who=first_data)
             return redirect("main_list:items", person_name=first_person.who)
         else:
             return redirect("main_list:index")
-    
+            
     people = models.Person.objects.filter(user=request.user)
     context = {
         "person_name": person_name,

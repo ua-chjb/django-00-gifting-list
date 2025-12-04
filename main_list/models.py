@@ -3,20 +3,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Person(models.Model):
-    person_enum = [
-        ('Mom', 'Mom'),
-        ('Dad', 'Dad'),
-        ('Court', 'Court'),
-        ('Andrew', 'Andrew'),
-        ("Ben", "Ben"),
-        ('Eliza', 'Eliza'),
-        ('Maggie', 'Maggie'),
-        ("Phinney", "Phinney"),
-        ('Secret santa', 'Secret santa')
-    ]
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    who = models.CharField(max_length=200, choices=person_enum)
+    who = models.CharField(max_length=200)
 
     def __str__(self):
         return self.who
