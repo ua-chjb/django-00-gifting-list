@@ -682,6 +682,44 @@ body:has(.auth_background) {
     color: green;
 }
 
+.home-bar-years {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.home-bar-years a {
+    text-decoration: none;
+    text-align: center;
+    color: #333;
+    flex: 1;
+}
+
+.home-bar-years a:hover {
+    color: green;
+}
+
+.logout-button-years {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font: inherit;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 @media all and (max-width: 1000px){
     .card_main, .calc-item, .calc-total {
@@ -713,6 +751,38 @@ body:has(.auth_background) {
 
     .breadcrumb-item {
         font-size:32px;
+    }
+
+    .home-bar-years {
+        padding: 25px;
+    }
+
+    .logout-form-years {
+        margin: 0;
+        display: flex;
+        flex: 1;
+    }
+    
+    .logout-button-years {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #333;
+        font: inherit;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logout-button-years .logout-button-emoji {
+        font-size: 22px;
+    }
+    
+    .logout-button-years .logout-button-text {
+        font-size: 13px;
     }
 
 

@@ -18,7 +18,11 @@ class Item(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    year = models.IntegerField(default=2025)
     name = models.CharField(max_length=200)
     who = models.ManyToManyField(Person, blank=True)
     type_gift = models.CharField(max_length=20, choices=type_gift_enum)
     price = models.FloatField()
+
+    def __str__(self):
+        return self.name

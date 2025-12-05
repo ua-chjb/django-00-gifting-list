@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Christmas Gifting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kedebideri:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="background bottom_margin">
+        <h1 class="h1_header">Christmas Gifting</h1>
+        
+        {% for year in years %}
+        <div class="card card_main">
+            <a href="{% url 'main_list:index' year=year %}" class="who">
+                <div class="flex f_space_between f_row">
+                    <div class="person_name">{{ year }}</div>
+                </div>
+            </a>
+        </div>
+        {% empty %}
+        <div class="card card_main">
+            <p class="text-center">No items yet. Start by adding items for a year!</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="home-bar-years">
+        <form method="post" action="{% url 'logout' %}" class="logout-form-years">
+            {% csrf_token %}
+            <button type="submit" class="logout-button-years">
+                <div class="logout-button-emoji">👤</div>
+                <div class="logout-button-text">Logout</div>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

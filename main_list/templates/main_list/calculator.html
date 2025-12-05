@@ -23,13 +23,6 @@
             </form>
         </h1>
             
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb_nav">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'main_list:index' %}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Calculator</li>
-            </ol>
-        </nav>
-
         <!-- Filter Form -->
         <form method="GET" class="filter-form">
             <div class="card filter_dropdowns">
@@ -79,15 +72,19 @@
     </div>
 
     <div class="home-bar">
-        <a href="{% url 'main_list:index' %}">
-            <div class="home-bar-emoji">🏠</div>
-            <div class="home-bar-text">Home</div>
+        <a href="{% url 'main_list:years' %}">
+            <div class="home-bar-emoji">📅</div>
+            <div class="home-bar-text">Years</div>
         </a>
-        <a href="{% url 'main_list:add_item_general' %}">
+        <a href="{% url 'main_list:index' year=year %}">
+            <div class="home-bar-emoji">🎁</div>
+            <div class="home-bar-text">Gifts</div>
+        </a>
+        <a href="{% url 'main_list:add_item_general' year=year %}">
             <div class="home-bar-emoji">➕</div>
             <div class="home-bar-text">Add</div>
         </a>
-        <a href="{% url 'main_list:calculator' %}">
+        <a href="{% url 'main_list:calculator' year=year %}">
             <div class="home-bar-emoji">🧮</div>
             <div class="home-bar-text">Calculator</div>
         </a>
