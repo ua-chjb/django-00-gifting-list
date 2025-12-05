@@ -18,6 +18,35 @@ body {
     color: black;
 }
 
+.logout-form {
+    margin: 0;
+    float: right;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.logout-button:hover {
+    color: green;
+}
+
+.logout-button-emoji {
+    font-size: inherit;
+}
+
+.logout-button-text {
+    font-size: inherit;
+}
+
 .person_name, .person_count {
     color: green;
     font-size: 3em;

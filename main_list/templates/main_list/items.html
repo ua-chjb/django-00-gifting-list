@@ -14,7 +14,12 @@
     <div class="background bottom_margin">
         <h1 class="h1_header">
             Gift list for {{ person_name }}
-            <a href="{% url 'logout' %}" style="float: right; color: white; font-size: 0.5em;">Logout</a>
+            <form method="post" action="{% url 'logout' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">
+                    <div class="logout-button-text">Logout</div>
+                </button>
+            </form>
         </h1>
         
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrumb_nav">
